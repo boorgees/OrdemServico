@@ -12,11 +12,67 @@ public class UsuarioController : ControllerBase
     {
         _usuarioService = usuarioService;
     }
- 
+
     [HttpGet]
     public async Task<IActionResult> GetAllUsuarios()
     {
         var usuarios = await _usuarioService.GetAllUsuariosAsync();
         return Ok(usuarios);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetUsuarioByIdAsync(int id)
+    {
+        var usuarios = await _usuarioService.GetUsuarioByIdAsync(id);
+
+        if (usuarios == null)
+        {
+            return NotFound();
+        }
+        return Ok(usuarios);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create([FromBody] Usuario usuario)
+    {
+        try
+        {
+            var novoUsuario = await _usuarioService.AddUsuarioAsync(usuario);
+            return CreatedAtAction(nameof(GetUsuarioByIdAsync), new { id = novoUsuario.Id }, novoUsuario);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensagem = ex.Message });
+        }
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateUsuario(int id, [FromBody] Usuario usuario)
+    {
+        try
+        {
+            var usuarioAtualizado = await _usuarioService.UpdateAsync(usuario);
+            return Ok(usuarioAtualizado);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensagem = ex.Message });
+        }
+    }
+
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteUsuario(int id)
+    {
+        try
+        {
+            await _usuarioService.DeleteAsync(id);
+            return NoContent();
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { mensagem = ex.Message });
+        }
+    }
+
 }
