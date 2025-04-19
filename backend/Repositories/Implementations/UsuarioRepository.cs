@@ -1,9 +1,8 @@
-using OrdemServicoAPI.Repositories;
-using OrdemServicoAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using OrdemServicoAPI.Data;
+using OrdemServicoAPI.Models;
 
-
-namespace OrdemServicoAPI.Models
+namespace OrdemServicoAPI.Repositories.Implementations
 {
     public class UsuarioRepository : IUsuarioRepository
     {

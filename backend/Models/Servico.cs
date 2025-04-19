@@ -11,13 +11,13 @@ namespace OrdemServicoAPI
         [Required(ErrorMessage = "O nome é obrigatório"),
          StringLength(100, ErrorMessage = "O nome deve ter no máximo 100 caracteres")]
 
-        public string Nome { get; set; }
+        public required string Nome { get; set; }
 
         [Required(ErrorMessage = "A descrição é obrigatória")]
         [StringLength(500, ErrorMessage = "A descrição deve ter no máximo 500 caracteres")]
         [DisplayName("Descrição")]
 
-        public string Descricao { get; set; }
+        public required string Descricao { get; set; }
 
         [Required, DataType(DataType.Date), DisplayName("Data de Criação"),
          DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
@@ -29,6 +29,6 @@ namespace OrdemServicoAPI
         [DisplayName("Valor")]
         public decimal Valor { get; set; }
 
-        public ICollection<OrdemServicoServico> OrdensServico { get; set; }
+        public required ICollection<OrdemServicoServico> OrdensServico { get; set; }
     }
 }
