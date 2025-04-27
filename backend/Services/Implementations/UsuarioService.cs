@@ -2,8 +2,6 @@ using OrdemServicoAPI.Models;
 using OrdemServicoAPI.Repositories;
 using OrdemServicoAPI.Services.Interfaces;
 
-
-
 namespace OrdemServicoAPI.Services
 {
     public class UsuarioService : IUsuarioService
@@ -21,7 +19,7 @@ namespace OrdemServicoAPI.Services
             return await _usuarioRepository.GetAllUsuariosAsync();
         }
 
-        public async Task<Usuario> GetUsuarioByIdAsync(int id)
+        public async Task<Usuario?> GetUsuarioByIdAsync(int id)
         {
             var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
             if (usuario == null)
@@ -32,9 +30,9 @@ namespace OrdemServicoAPI.Services
 
         }
 
-        public async Task<Usuario> GetByEmailAsync(string email)
+        public async Task<Usuario?> GetUsuarioByEmailAsync(string email)
         {
-            var usuario = await _usuarioRepository.GetByEmailAsync(email);
+            var usuario = await _usuarioRepository.GetUsuarioByEmailAsync(email);
             if (usuario == null)
             {
                 throw new Exception("Usuário não encontrado!");
@@ -44,7 +42,7 @@ namespace OrdemServicoAPI.Services
 
         public async Task<Usuario> AddUsuarioAsync(Usuario usuario)
         {
-            var existingUsuario = await _usuarioRepository.GetByEmailAsync(usuario.Email);
+            var existingUsuario = await _usuarioRepository.GetUsuarioByEmailAsync(usuario.Email);
             if (existingUsuario != null)
             {
                 throw new Exception("E-mail já existe!");
@@ -54,7 +52,7 @@ namespace OrdemServicoAPI.Services
 
         }
 
-        public async Task<Usuario> UpdateAsync(Usuario usuario)
+        public async Task<Usuario> UpdateUsuarioAsync(Usuario usuario)
         {
             var existingUsuario = await _usuarioRepository.GetUsuarioByIdAsync(usuario.Id);
             if (existingUsuario == null)
@@ -63,7 +61,7 @@ namespace OrdemServicoAPI.Services
             }
             if (existingUsuario.Email != usuario.Email)
             {
-                var emailExists = await _usuarioRepository.GetByEmailAsync(usuario.Email);
+                var emailExists = await _usuarioRepository.GetUsuarioByEmailAsync(usuario.Email);
                 if (emailExists != null)
                 {
                     throw new Exception("E-mail já existe!");
@@ -74,7 +72,7 @@ namespace OrdemServicoAPI.Services
 
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteUsuarioAsync(int id)
         {
             var usuario = await _usuarioRepository.GetUsuarioByIdAsync(id);
             if (usuario == null)

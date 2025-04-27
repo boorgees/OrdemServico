@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace OrdemServicoAPI.Models;
 
+[Keyless]
 public class OrdemServicoServico
 {
     public int OrdemServicoId { get; set; }
