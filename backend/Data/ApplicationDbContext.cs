@@ -11,7 +11,7 @@ namespace OrdemServicoAPI.Data
         public DbSet<Servico> Servicos { get; set; }
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<OrdemServico> OrdensServico { get; set; }
-        public DbSet<OrdemServicoServico> OrdemServicoServicos { get; set; }
+        public DbSet<OrdemServicoServico?> OrdemServicoServicos { get; set; }
 
         // public DbSet<Anexo> Anexos { get; set; }
         // public DbSet<HistoricoAlteracao> HistoricosAlteracao { get; set; }

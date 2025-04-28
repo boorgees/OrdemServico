@@ -29,6 +29,6 @@ namespace OrdemServicoAPI
         [DisplayName("Valor")]
         public decimal Valor { get; set; }
 
-        public required ICollection<OrdemServicoServico> OrdensServico { get; set; }
+        public ICollection<OrdemServicoServico> OrdensServico { get; set; }
     }
 }

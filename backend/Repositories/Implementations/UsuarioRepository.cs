@@ -23,7 +23,7 @@ namespace OrdemServicoAPI.Repositories.Implementations
             return await _context.Usuarios.ToListAsync();
         }
 
-        public async Task<Usuario?> GetByEmailAsync(string email)
+        public async Task<Usuario?> GetUsuarioByEmailAsync(string email)
         {
             return await _context.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
         }
