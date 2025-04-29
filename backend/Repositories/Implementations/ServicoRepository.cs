@@ -12,7 +12,7 @@ public class ServicoRepository : IServicoRepository
     {
         _context = context;
     }
-    
+
     public async Task<IEnumerable<Servico>> GetAllServicosAsync()
     {
         return await _context.Servicos.ToListAsync();
@@ -23,13 +23,17 @@ public class ServicoRepository : IServicoRepository
         return await _context.Servicos.FirstOrDefaultAsync(index => index.Id == id);
     }
 
+    public async Task<Servico?> GetServicoByNameAsync(string nome)
+    {
+        return await _context.Servicos.FirstOrDefaultAsync(index => index.Nome == nome);
+    }
     public async Task AddServicoAsync(Servico servico)
     {
         await _context.Servicos.AddAsync(servico);
         await _context.SaveChangesAsync();
-        
+
     }
-    
+
     public async Task UpdateServicoAsync(Servico servico)
     {
         _context.Servicos.Update(servico);

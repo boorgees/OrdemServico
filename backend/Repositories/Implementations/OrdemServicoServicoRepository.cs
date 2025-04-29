@@ -16,7 +16,7 @@ public class OrdemServicoServicoRepository : IOrdemServicoServicoRepository
 
     public async Task<IEnumerable<OrdemServicoServico>> GetAllAsync()
     {
-        return await _context.OrdemServicoServicos
+        return await _context.OrdemServicoServicos.AsNoTracking()
             .Include(oss => oss.OrdemServico)
             .Include(oss => oss.Servico)
             .ToListAsync();

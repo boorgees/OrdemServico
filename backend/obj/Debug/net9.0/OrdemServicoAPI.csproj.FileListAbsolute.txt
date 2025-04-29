@@ -132,3 +132,14 @@ C:\Users\chris\Documents\Projetos\OrdemServicoAPI\backend\bin\Debug\net9.0\ru\Mi
 C:\Users\chris\Documents\Projetos\OrdemServicoAPI\backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\chris\Documents\Projetos\OrdemServicoAPI\backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\chris\Documents\Projetos\OrdemServicoAPI\backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.csproj.AssemblyReference.cache
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.AssemblyInfoInputs.cache
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.AssemblyInfo.cs
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.csproj.CoreCompileInputs.cache
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.sourcelink.json
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.dll
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\refint\OrdemServicoAPI.dll
+C:\Users\chris\Documents\Projetos\SistemaOrdemServico\OrdemServico\backend\obj\Debug\net9.0\OrdemServicoAPI.pdb

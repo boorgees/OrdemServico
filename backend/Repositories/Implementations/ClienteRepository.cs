@@ -35,6 +35,23 @@ namespace Repositories.Implementations
             return clienteId;
         }
 
+        public async Task<Cliente?> GetClienteByCpfAsync(string cpf)
+        {
+            var clienteCpf = await _context.Clientes.FirstOrDefaultAsync(c => c.Cpf == cpf);
+            return clienteCpf;
+        }
+
+        public async Task<Cliente?> GetClienteByTelefone(string telefone)
+        {
+            var clienteTelefone = await _context.Clientes.FirstOrDefaultAsync(c => c.Telefone == telefone);
+            return clienteTelefone;
+        }
+
+        public async Task<Cliente?> GetClienteByNome(string nome)
+        {
+            var clienteNome = await _context.Clientes.FirstOrDefaultAsync(c => c.Nome == nome);
+            return clienteNome;
+        }
         public async Task AddClienteAsync(Cliente cliente)
         {
             await _context.Clientes.AddAsync(cliente);

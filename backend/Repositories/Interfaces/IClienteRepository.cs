@@ -6,6 +6,9 @@ namespace OrdemServicoAPI.Repositories.Interfaces
     {
         Task<Cliente?> GetClienteByIdAsync(int id);
         Task<Cliente?> GetByEmailAsync(string email);
+        Task<Cliente?> GetClienteByCpfAsync(string cpf);
+        Task<Cliente?> GetClienteByTelefone(string telefone);
+        Task<Cliente?> GetClienteByNome(string nome);
         Task<IEnumerable<Cliente>> GetAllClientesAsync();
         Task AddClienteAsync(Cliente cliente);
         Task UpdateClienteAsync(Cliente cliente);

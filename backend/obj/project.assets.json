@@ -3239,11 +3239,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Projetos\\OrdemServico\\backend\\OrdemServicoAPI.csproj",
+      "projectUniqueName": "C:\\Users\\chris\\Documents\\Projetos\\SistemaOrdemServico\\OrdemServico\\backend\\OrdemServicoAPI.csproj",
       "projectName": "OrdemServicoAPI",
-      "projectPath": "E:\\Projetos\\OrdemServico\\backend\\OrdemServicoAPI.csproj",
+      "projectPath": "C:\\Users\\chris\\Documents\\Projetos\\SistemaOrdemServico\\OrdemServico\\backend\\OrdemServicoAPI.csproj",
       "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "E:\\Projetos\\OrdemServico\\backend\\obj\\",
+      "outputPath": "C:\\Users\\chris\\Documents\\Projetos\\SistemaOrdemServico\\OrdemServico\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
