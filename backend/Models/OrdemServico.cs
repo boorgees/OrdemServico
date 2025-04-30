@@ -6,7 +6,7 @@ namespace OrdemServicoAPI.Models
 {
     public class OrdemServico
     {
-        [Key, Required] 
+        [Key, Required]
         public int Id { get; set; }
 
         [ForeignKey("Cliente")]
@@ -47,7 +47,6 @@ namespace OrdemServicoAPI.Models
 
         [DisplayName("Serviços")]
         [InverseProperty("OrdemServico")]
-        [Required(ErrorMessage = "A lista de serviços é obrigatória")]
         public required ICollection<OrdemServicoServico> Servicos { get; set; }
     }
 
@@ -55,13 +54,9 @@ namespace OrdemServicoAPI.Models
     public enum StatusEnum
     {
         [Description("Pendente")] Pendente = 0,
-
         [Description("Em Andamento")] EmAndamento = 1,
-
         [Description("Aguardando Aprovação")] AguardandoAprovacao = 2,
-
         [Description("Concluído")] Concluido = 3,
-
         [Description("Cancelado")] Cancelado = 4
     }
 }

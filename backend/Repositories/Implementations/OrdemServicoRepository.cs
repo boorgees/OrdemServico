@@ -31,10 +31,11 @@ namespace OrdemServicoAPI.Repositories
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
 
-        public async Task AddAsync(OrdemServico ordem)
+        public async Task<OrdemServico> AddAsync(OrdemServico ordem)
         {
             await _context.OrdensServico.AddAsync(ordem);
             await _context.SaveChangesAsync();
+            return ordem;
         }
 
         public async Task UpdateAsync(OrdemServico ordem)

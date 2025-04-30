@@ -6,7 +6,7 @@ namespace OrdemServicoAPI.Repositories.Interfaces
     {
         Task<IEnumerable<OrdemServico>> GetAllAsync();
         Task<OrdemServico?> GetByIdAsync(int id);
-        Task AddAsync(OrdemServico ordem);
+        Task<OrdemServico> AddAsync(OrdemServico ordemServico);
         Task UpdateAsync(OrdemServico ordem);
         Task DeleteAsync(int id);
     }
