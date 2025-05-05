@@ -1,6 +1,227 @@
 @OrdemServicoAPI_HostAddress = http://localhost:5129
 
-GET {{OrdemServicoAPI_HostAddress}}/weatherforecast/
+### Teste de Clientes ###
+
+# Listar todos os clientes
+GET {{OrdemServicoAPI_HostAddress}}/api/clientes
+Accept: application/json
+
+### 
+
+# Buscar cliente por ID
+GET {{OrdemServicoAPI_HostAddress}}/api/clientes/1
 Accept: application/json
 
 ###
+
+# Buscar cliente por email
+GET {{OrdemServicoAPI_HostAddress}}/api/clientes/email/teste@email.com
+Accept: application/json
+
+###
+
+# Buscar cliente por CPF
+GET {{OrdemServicoAPI_HostAddress}}/api/clientes/cpf/12345678901
+Accept: application/json
+
+###
+
+# Buscar cliente por telefone
+GET {{OrdemServicoAPI_HostAddress}}/api/clientes/telefone/11999999999
+Accept: application/json
+
+###
+
+# Buscar cliente por nome
+GET {{OrdemServicoAPI_HostAddress}}/api/clientes/nome/João
+Accept: application/json
+
+###
+
+# Criar novo cliente
+POST {{OrdemServicoAPI_HostAddress}}/api/clientes
+Content-Type: application/json
+
+{
+    "nome": "João Silva",
+    "cpf": "12345678901",
+    "telefone": "11999999999",
+    "email": "joao@email.com",
+    "endereco": "Rua Teste, 123",
+    "status": 1
+}
+
+###
+
+# Atualizar cliente
+PUT {{OrdemServicoAPI_HostAddress}}/api/clientes/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nome": "João Silva Atualizado",
+    "cpf": "12345678901",
+    "telefone": "11999999999",
+    "email": "joao@email.com",
+    "endereco": "Rua Teste, 123",
+    "status": 1
+}
+
+###
+
+# Deletar cliente
+DELETE {{OrdemServicoAPI_HostAddress}}/api/clientes/1
+
+### Teste de Ordens de Serviço ###
+
+# Listar todas as ordens
+GET {{OrdemServicoAPI_HostAddress}}/api/ordens-servico
+Accept: application/json
+
+###
+
+# Buscar ordem por ID
+GET {{OrdemServicoAPI_HostAddress}}/api/ordens-servico/1
+Accept: application/json
+
+###
+
+# Buscar ordens por cliente
+GET {{OrdemServicoAPI_HostAddress}}/api/ordens-servico/cliente/1
+Accept: application/json
+
+###
+
+# Buscar ordens por status
+GET {{OrdemServicoAPI_HostAddress}}/api/ordens-servico/status/Pendente
+Accept: application/json
+
+###
+
+# Criar nova ordem
+POST {{OrdemServicoAPI_HostAddress}}/api/ordens-servico
+Content-Type: application/json
+
+{
+    "clienteId": 1,
+    "usuarioId": 1,
+    "titulo": "Manutenção de Computador",
+    "descricao": "Computador não liga",
+    "status": 0
+}
+
+###
+
+# Atualizar ordem
+PUT {{OrdemServicoAPI_HostAddress}}/api/ordens-servico/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "clienteId": 1,
+    "usuarioId": 1,
+    "titulo": "Manutenção de Computador",
+    "descricao": "Computador não liga - Atualizado",
+    "status": 1
+}
+
+###
+
+# Atualizar status da ordem
+PUT {{OrdemServicoAPI_HostAddress}}/api/ordens-servico/1/status
+Content-Type: application/json
+
+{
+    "status": "EmAndamento"
+}
+
+###
+
+# Deletar ordem
+DELETE {{OrdemServicoAPI_HostAddress}}/api/ordens-servico/1
+
+### Teste de Serviços ###
+
+# Listar todos os serviços
+GET {{OrdemServicoAPI_HostAddress}}/api/servicos
+Accept: application/json
+
+###
+
+# Buscar serviço por ID
+GET {{OrdemServicoAPI_HostAddress}}/api/servicos/1
+Accept: application/json
+
+###
+
+# Criar novo serviço
+POST {{OrdemServicoAPI_HostAddress}}/api/servicos
+Content-Type: application/json
+
+{
+    "nome": "Manutenção de Hardware",
+    "descricao": "Manutenção em componentes de hardware",
+    "valor": 150.00
+}
+
+###
+
+# Atualizar serviço
+PUT {{OrdemServicoAPI_HostAddress}}/api/servicos/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nome": "Manutenção de Hardware",
+    "descricao": "Manutenção em componentes de hardware - Atualizado",
+    "valor": 200.00
+}
+
+###
+
+# Deletar serviço
+DELETE {{OrdemServicoAPI_HostAddress}}/api/servicos/1
+
+### Teste de Usuários ###
+
+# Listar todos os usuários
+GET {{OrdemServicoAPI_HostAddress}}/api/usuarios
+Accept: application/json
+
+###
+
+# Buscar usuário por ID
+GET {{OrdemServicoAPI_HostAddress}}/api/usuarios/1
+Accept: application/json
+
+###
+
+# Criar novo usuário
+POST {{OrdemServicoAPI_HostAddress}}/api/usuarios
+Content-Type: application/json
+
+{
+    "nome": "Admin",
+    "email": "admin@email.com",
+    "senha": "123456",
+    "tipo": 1
+}
+
+###
+
+# Atualizar usuário
+PUT {{OrdemServicoAPI_HostAddress}}/api/usuarios/1
+Content-Type: application/json
+
+{
+    "id": 1,
+    "nome": "Admin Atualizado",
+    "email": "admin@email.com",
+    "senha": "123456",
+    "tipo": 1
+}
+
+###
+
+# Deletar usuário
+DELETE {{OrdemServicoAPI_HostAddress}}/api/usuarios/1

@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace OrdemServicoAPI.Models
 {
@@ -21,17 +22,17 @@ namespace OrdemServicoAPI.Models
 
         [Required(ErrorMessage = "O título é obrigatório")]
         [StringLength(100, ErrorMessage = "O título deve ter no máximo 100 caracteres")]
-        public required string Titulo { get; set; }
+        public string Titulo { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "A descrição é obrigatória")]
         [StringLength(100, ErrorMessage = "A descrição deve ter no máximo 100 caracteres.")]
-        public required string Descricao { get; set; }
+        public string Descricao { get; set; } = string.Empty;
 
         [Required(ErrorMessage = "A data de início é obrigatória")]
         [DataType(DataType.Date)]
         [DisplayName("Data de Início")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DataCriacao { get; set; } = DateTime.Now;
+        public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
 
         [DataType(DataType.Date)]
         [DisplayName("Data de Conclusão")]
@@ -42,12 +43,12 @@ namespace OrdemServicoAPI.Models
         public StatusEnum Status { get; set; }
 
         // Relações de navegação
-        public required Cliente Cliente { get; set; }
-        public required Usuario Usuario { get; set; }
+        public Cliente? Cliente { get; set; }
+        public Usuario? Usuario { get; set; }
 
         [DisplayName("Serviços")]
         [InverseProperty("OrdemServico")]
-        public required ICollection<OrdemServicoServico> Servicos { get; set; }
+        public ICollection<OrdemServicoServico>? Servicos { get; set; }
     }
 
 

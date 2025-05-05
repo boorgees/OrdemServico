@@ -1,11 +1,12 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OrdemServicoAPI.Models
 {
     public class Usuario
     {
-        [Key, Required] public int Id { get; set; }
+        [Key, Required, DatabaseGenerated(DatabaseGeneratedOption.Identity)] public int Id { get; set; }
 
         [Required(ErrorMessage = "O nome é obrigatório")]
         [StringLength(100, ErrorMessage = "O nome deve ter no máximo 100 caracteres")]
@@ -19,8 +20,8 @@ namespace OrdemServicoAPI.Models
         public required string SenhaHash { get; set; }
 
         [Required, DisplayName("Data de Criação"), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
-        public DateTime DataCriacao { get; set; } = DateTime.Now;
-        
+        public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
+
         [Required]
         public TipoUsuarioEnum TipoUsuario { get; set; }
 

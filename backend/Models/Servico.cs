@@ -22,13 +22,13 @@ namespace OrdemServicoAPI
         [Required, DataType(DataType.Date), DisplayName("Data de Criação"),
          DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}")]
 
-        public DateTime DataCriacao { get; set; } = DateTime.Now;
+        public DateTime DataCriacao { get; set; } = DateTime.UtcNow;
 
         [Required(ErrorMessage = "O valor é obrigatório"), DataType(DataType.Currency),
          DisplayFormat(DataFormatString = "{0:C}")]
         [DisplayName("Valor")]
         public decimal Valor { get; set; }
 
-        public ICollection<OrdemServico> OrdensServicos { get; set; } = new List<OrdemServico>();
+        public ICollection<OrdemServicoServico> OrdensServico { get; set; } = new List<OrdemServicoServico>();
     }
 }

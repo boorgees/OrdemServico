@@ -41,7 +41,7 @@ namespace OrdemServicoAPI.Controllers
             try
             {
                 var novoUsuario = await _usuarioService.AddUsuarioAsync(usuario);
-                return CreatedAtAction(nameof(GetUsuarioByIdAsync), new { id = novoUsuario.Id }, novoUsuario);
+                return Ok(novoUsuario);
             }
             catch (Exception ex)
             {

@@ -85,4 +85,11 @@ public class OrdemServicoServicoRepository : IOrdemServicoServicoRepository
         await _context.SaveChangesAsync();
         return true;
     }
+
+    public async Task<OrdemServicoServico> AddAsync(OrdemServicoServico ordemServicoServico)
+    {
+        await _context.OrdemServicoServicos.AddAsync(ordemServicoServico);
+        await _context.SaveChangesAsync();
+        return ordemServicoServico;
+    }
 }

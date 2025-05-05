@@ -67,9 +67,12 @@ namespace OrdemServicoAPI.Services
                     throw new Exception("E-mail já existe!");
                 }
             }
-            await _usuarioRepository.UpdateUsuarioAsync(usuario);
-            return usuario;
-
+            existingUsuario.Nome = usuario.Nome;
+            existingUsuario.Email = usuario.Email;
+            existingUsuario.SenhaHash = usuario.SenhaHash;
+            existingUsuario.TipoUsuario = usuario.TipoUsuario;
+            await _usuarioRepository.UpdateUsuarioAsync(existingUsuario);
+            return existingUsuario;
         }
 
         public async Task DeleteUsuarioAsync(int id)

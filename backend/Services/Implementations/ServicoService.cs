@@ -1,4 +1,6 @@
+using OrdemServicoAPI.Services.Interfaces;
 using OrdemServicoAPI.Repositories.Interfaces;
+using OrdemServicoAPI.Models;
 
 namespace OrdemServicoAPI.Services.Implementations
 {
@@ -25,7 +27,7 @@ namespace OrdemServicoAPI.Services.Implementations
             {
                 throw new KeyNotFoundException("Serviço não encontrado!");
             }
-            if (servicoDeletado.OrdensServicos != null && servicoDeletado.OrdensServicos.Any())
+            if (servicoDeletado.OrdensServico != null && servicoDeletado.OrdensServico.Any())
             {
                 throw new InvalidOperationException("Serviço não pode ser deletado, pois está vinculado a uma ordem de serviço!");
             }
@@ -68,7 +70,7 @@ namespace OrdemServicoAPI.Services.Implementations
                 throw new KeyNotFoundException("Serviço não encontrado!");
             }
 
-            if (servicoAtualizado.OrdensServicos != null && servicoAtualizado.OrdensServicos.Any())
+            if (servicoAtualizado.OrdensServico != null && servicoAtualizado.OrdensServico.Any())
             {
                 throw new InvalidOperationException("Serviço não pode ser atualizado, pois está vinculado a uma ordem de serviço!");
             }

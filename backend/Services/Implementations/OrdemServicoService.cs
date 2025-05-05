@@ -67,10 +67,6 @@ namespace OrdemServicoAPI.Services
             {
                 throw new KeyNotFoundException("Ordem de serviço não encontrada!");
             }
-            if (ordemServico.Servicos != null && ordemServico.Servicos.Any())
-            {
-                throw new InvalidOperationException("Ordem de serviço não pode ser atualizada, pois está vinculada a um serviço!");
-            }
             if (ordemServico.DataConclusao.HasValue && ordemServico.DataConclusao < ordemServico.DataCriacao)
             {
                 throw new ArgumentException("A data de conclusão não pode ser anterior à data de criação.");
@@ -85,6 +81,49 @@ namespace OrdemServicoAPI.Services
             {
                 throw new ArgumentException("A data de conclusão não pode ser anterior à data de criação.");
             }
+        }
+
+        public async Task<IEnumerable<OrdemServico>> GetOrdensServicoByClienteAsync(int clienteId)
+        {
+            var ordensServico = await _ordemServicoRepository.GetOrdensServicoByClienteAsync(clienteId);
+            if (ordensServico == null || !ordensServico.Any())
+            {
+                throw new KeyNotFoundException("Nenhuma ordem de serviço encontrada para este cliente!");
+            }
+            return ordensServico;
+        }
+
+        public async Task<IEnumerable<OrdemServico>> GetOrdensServicoByStatusAsync(string status)
+        {
+            if (!Enum.TryParse<StatusEnum>(status, true, out var statusEnum))
+            {
+                throw new ArgumentException($"Status inválido! Status válidos são: {string.Join(", ", Enum.GetNames(typeof(StatusEnum)))}");
+            }
+
+            var ordensServico = await _ordemServicoRepository.GetOrdensServicoByStatusAsync(statusEnum);
+            if (ordensServico == null || !ordensServico.Any())
+            {
+                throw new KeyNotFoundException("Nenhuma ordem de serviço encontrada com este status!");
+            }
+            return ordensServico;
+        }
+
+        public async Task<OrdemServico> UpdateStatusAsync(int id, string novoStatus)
+        {
+            var ordemServico = await _ordemServicoRepository.GetByIdAsync(id);
+            if (ordemServico == null)
+            {
+                throw new KeyNotFoundException("Ordem de serviço não encontrada!");
+            }
+
+            if (!Enum.TryParse<StatusEnum>(novoStatus, true, out var statusEnum))
+            {
+                throw new ArgumentException($"Status inválido! Status válidos são: {string.Join(", ", Enum.GetNames(typeof(StatusEnum)))}");
+            }
+
+            ordemServico.Status = statusEnum;
+            await _ordemServicoRepository.UpdateAsync(ordemServico);
+            return ordemServico;
         }
     }
 }

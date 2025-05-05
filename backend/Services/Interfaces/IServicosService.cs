@@ -1,4 +1,4 @@
-namespace OrdemServicoAPI.Services
+namespace OrdemServicoAPI.Services.Interfaces
 {
     public interface IServicosService
     {

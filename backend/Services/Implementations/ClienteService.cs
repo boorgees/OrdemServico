@@ -3,7 +3,7 @@ using OrdemServicoAPI.Services.Interfaces;
 using OrdemServicoAPI.Repositories.Interfaces;
 using Npgsql.Replication.PgOutput.Messages;
 
-namespace OrdemServicoAPI.Services
+namespace OrdemServicoAPI.Services.Implementations
 {
     public class ClienteService : IClienteService
     {

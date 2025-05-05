@@ -76,6 +76,7 @@ namespace OrdemServicoAPI.Controllers
             }
             return Ok(updatedCliente);
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCliente(int id)
         {
@@ -88,6 +89,7 @@ namespace OrdemServicoAPI.Controllers
             await _clienteService.DeleteClienteAsync(id);
             return NoContent();
         }
+
         [HttpGet("telefone/{telefone}")]
         public async Task<IActionResult> GetClienteByTelefone(string telefone)
         {
@@ -98,6 +100,7 @@ namespace OrdemServicoAPI.Controllers
             }
             return Ok(cliente);
         }
+
         [HttpGet("nome/{nome}")]
         public async Task<IActionResult> GetClienteByNome(string nome)
         {
@@ -108,6 +111,5 @@ namespace OrdemServicoAPI.Controllers
             }
             return Ok(cliente);
         }
-        
     }
 }

@@ -25,9 +25,12 @@ namespace OrdemServicoAPI.Repositories
 
         public Task<OrdemServico?> GetByIdAsync(int id)
         {
-            return _context.OrdensServico.Include(o => o.Cliente).Include(o => o.Usuario)
+            return _context.OrdensServico
+                .Include(o => o.Cliente)
+                .Include(o => o.Usuario)
                 .Include(o => o.Servicos)
                     .ThenInclude(os => os.Servico)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
 
@@ -59,6 +62,26 @@ namespace OrdemServicoAPI.Repositories
                 _context.OrdensServico.Remove(ordem);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<IEnumerable<OrdemServico>> GetOrdensServicoByClienteAsync(int clienteId)
+        {
+            return await _context.OrdensServico
+                .Include(o => o.Cliente)
+                .Include(o => o.Servicos)
+                    .ThenInclude(oss => oss.Servico)
+                .Where(o => o.ClienteId == clienteId)
+                .ToListAsync();
+        }
+
+        public async Task<IEnumerable<OrdemServico>> GetOrdensServicoByStatusAsync(StatusEnum status)
+        {
+            return await _context.OrdensServico
+                .Include(o => o.Cliente)
+                .Include(o => o.Servicos)
+                    .ThenInclude(oss => oss.Servico)
+                .Where(o => o.Status == status)
+                .ToListAsync();
         }
     }
 }

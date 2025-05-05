@@ -31,22 +31,30 @@ namespace OrdemServicoAPI.Repositories.Implementations
         public async Task AddUsuarioAsync(Usuario usuario)
         {
             await _context.Usuarios.AddAsync(usuario);
+            await _context.SaveChangesAsync();
         }
 
         public async Task UpdateUsuarioAsync(Usuario usuario)
         {
-            _context.Usuarios.Update(usuario);
-            await Task.CompletedTask;
+            var usuarioExistente = await _context.Usuarios.FindAsync(usuario.Id);
+            if (usuarioExistente != null)
+            {
+                usuarioExistente.Nome = usuario.Nome;
+                usuarioExistente.Email = usuario.Email;
+                usuarioExistente.SenhaHash = usuario.SenhaHash;
+                usuarioExistente.TipoUsuario = usuario.TipoUsuario;
+                await _context.SaveChangesAsync();
+            }
         }
 
         public async Task DeleteUsuarioAsync(int id)
         {
-            var usuario = await GetUsuarioByIdAsync(id);
+            var usuario = await _context.Usuarios.FindAsync(id);
             if (usuario != null)
             {
                 _context.Usuarios.Remove(usuario);
+                await _context.SaveChangesAsync();
             }
         }
-        
     }
 }

@@ -11,5 +11,6 @@ namespace OrdemServicoAPI.Repositories.Interfaces
         Task<OrdemServicoServico> CreateAsync(OrdemServicoServico ordemServicoServico);
         Task<bool> UpdateAsync(OrdemServicoServico ordemServicoServico);
         Task<bool> DeleteAsync(int ordemServicoId, int servicoId);
+        Task<OrdemServicoServico> AddAsync(OrdemServicoServico ordemServicoServico);
     }
 }
